@@ -1,0 +1,4 @@
+---
+services:
+  idp:
+    image: foo:latest

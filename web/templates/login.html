@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Single Sign-On</title>
+  <link rel="stylesheet" href="/css/main.css">
+</head>
+<body>
+  <main>
+    <h1>Sign In</h1>
+    <p class="form-note">Please enter your credentials.</p>
+
+    <form method="POST" action="/login" autocomplete="on">
+      <input type="hidden" name="csrf_token" value="{{ .CSRFToken }}">
+
+      <label for="identifier">Username</label>
+      <input id="identifier" name="identifier" type="text" required autofocus>
+
+      <label for="password">Password</label>
+      <input id="password" name="password" type="password" required>
+
+      <div class="row">
+        <label style="display:flex;align-items:center;font-size:13px"><input type="checkbox" name="remember" style="margin-right:8px"> Remember me</label>
+        <a class="muted" href="/forgot">Forgot?</a>
+      </div>
+
+      <div class="actions">
+        <button type="submit">Log In</button>
+      </div>
+    </form>
+
+    <div class="foot">
+      <p>Usage subject to the <a href="/terms">Terms of Service</a> agreement.</p>
+    </div>
+  </main>
+</body>
+</html>
