@@ -3,17 +3,15 @@ package server
 import (
 	"log"
 	"net/http"
-	"github.com/kevinharv/idp/internal/handlers/auth"
+
+	"github.com/kevinharv/idp/internal/handlers/oauth"
 )
 
 func Serve() {
 	mux := http.NewServeMux()
-	oauthMux := http.NewServeMux()
 
-	loadRoutes(oauthMux)
-	// Ensure oauth subpaths are routed to oauthMux (longest pattern wins)
-	mux.Handle("/oauth/", oauthMux)
-	mux.HandleFunc("/login", auth.GetLoginPage)
+	mux.HandleFunc("GET /oauth/authorize", oauth.HandleGETOAuthAuthorize)
+	mux.HandleFunc("POST /oauth/authorize", oauth.HandlePOSTOAuthAuthorize)
 
 	// Serve files from web/static at the site root.
 	// Example: GET /css/app.css -> web/static/css/app.css

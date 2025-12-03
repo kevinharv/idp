@@ -11,11 +11,11 @@
     <h1>Sign In</h1>
     <p class="form-note">Please enter your credentials.</p>
 
-    <form method="POST" action="/login" autocomplete="on">
+    <form method="POST" action="/oauth/authorize" autocomplete="on">
       <input type="hidden" name="csrf_token" value="{{ .CSRFToken }}">
 
-      <label for="identifier">Username</label>
-      <input id="identifier" name="identifier" type="text" required autofocus>
+      <label for="username">Username</label>
+      <input id="username" name="username" type="text" required autofocus>
 
       <label for="password">Password</label>
       <input id="password" name="password" type="password" required>

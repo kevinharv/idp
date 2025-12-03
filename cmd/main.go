@@ -1,6 +1,11 @@
 package main
 
-import "github.com/kevinharv/idp/internal/server"
+import (
+	"log/slog"
+	"os"
+
+	"github.com/kevinharv/idp/internal/server"
+)
 
 /*
 	- read in configuration
@@ -10,9 +15,11 @@ import "github.com/kevinharv/idp/internal/server"
 	- create OAuth and OIDC endpoints
 	- create SAML endpoints
 	- register middleware
-	- 
 */
 
 func main() {
+	logger := slog.New(slog.NewJSONHandler(os.Stdout, &slog.HandlerOptions{Level: slog.LevelDebug}))
+	slog.SetDefault(logger)
+	slog.Info("Starting IdP")
 	server.Serve()
 }
