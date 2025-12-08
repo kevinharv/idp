@@ -1,38 +1,110 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>Single Sign-On</title>
-  <link rel="stylesheet" href="/css/main.css">
-</head>
-<body>
-  <main>
-    <h1>Sign In</h1>
-    <p class="form-note">Please enter your credentials.</p>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Single Sign-On</title>
+    <link rel="stylesheet" href="/css/main.css" />
+  </head>
+  <body>
+    <main>
+      <div id="container">
+        <div id="card">
+          <div id="header">
+            <h1>Sign In</h1>
+          </div>
 
-    <form method="POST" action="/oauth/authorize" autocomplete="on">
-      <input type="hidden" name="csrf_token" value="{{ .CSRFToken }}">
+          <div id="form">
+            <form
+              id="login-form"
+              class="login-form"
+              method="POST"
+              action="/oauth/authorize"
+              autocomplete="on"
+            >
+              <input
+                id="csrf_token"
+                class="csrf-input"
+                type="hidden"
+                name="csrf_token"
+                value="{{ .CSRFToken }}"
+              />
 
-      <label for="username">Username</label>
-      <input id="username" name="username" type="text" required autofocus>
+              <label for="username">Username</label>
+              <div class="input-wrap">
+                <span class="input-icon" aria-hidden="true">
+                  <svg
+                    width="16"
+                    height="16"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="1.5"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    class="icon icon-user"
+                    aria-hidden="true"
+                  >
+                    <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                    <circle cx="12" cy="7" r="4"></circle>
+                  </svg>
+                </span>
+                <input
+                  id="username"
+                  class="input input-text"
+                  name="username"
+                  type="text"
+                  placeholder="Username"
+                  required
+                  autofocus
+                />
+              </div>
 
-      <label for="password">Password</label>
-      <input id="password" name="password" type="password" required>
+              <label for="password">Password</label>
+              <div class="input-wrap">
+                <span class="input-icon" aria-hidden="true">
+                  <svg
+                    width="16"
+                    height="16"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="1.5"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    class="icon icon-lock"
+                    aria-hidden="true"
+                  >
+                    <rect x="3" y="11" width="18" height="11" rx="2"></rect>
+                    <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+                  </svg>
+                </span>
+                <input
+                  id="password"
+                  class="input input-password"
+                  name="password"
+                  type="password"
+                  placeholder="Password"
+                  required
+                />
+              </div>
 
-      <div class="row">
-        <label style="display:flex;align-items:center;font-size:13px"><input type="checkbox" name="remember" style="margin-right:8px"> Remember me</label>
-        <a class="muted" href="/forgot">Forgot?</a>
+              <div class="actions">
+                <button id="login-submit" class="btn btn-primary" type="submit">
+                  Sign In
+                </button>
+              </div>
+            </form>
+          </div>
+
+          <div class="foot">
+            <p>
+              Usage subject to the
+              <a href="/terms">Terms of Service</a> agreement.
+            </p>
+          </div>
+        </div>
       </div>
-
-      <div class="actions">
-        <button type="submit">Log In</button>
-      </div>
-    </form>
-
-    <div class="foot">
-      <p>Usage subject to the <a href="/terms">Terms of Service</a> agreement.</p>
-    </div>
-  </main>
-</body>
+    </main>
+  </body>
 </html>
